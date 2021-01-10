@@ -1,0 +1,10 @@
+.Container {
+  display: flex;
+  justify-content: center;
+  padding: 0 40px;
+}
+
+.Container-layout { width: 100%; }
+.Container-layout--sm { max-width: 500px; }
+.Container-layout--md { max-width: 800px; }
+.Container-layout--lg { max-width: 1000px; }

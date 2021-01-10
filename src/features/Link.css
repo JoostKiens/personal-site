@@ -1,0 +1,27 @@
+.Link {
+  color: currentColor;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+}
+
+&:hover,
+&:focus { color: var(--yellow-alt); }
+
+.Link-underline {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  content: '';
+}
+
+.LinkIcon { display: block; }
+
+.LinkIcon > svg {
+  width: 100%;
+  height: auto;
+}

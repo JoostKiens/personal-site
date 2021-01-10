@@ -1,0 +1,35 @@
+.DescriptionTitle {
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.DescriptionTitle-title {
+  text-align: center;
+  padding: 0 0.5em;
+}
+
+.DescriptionTitle-decoration {
+  font-size: 10rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.DescriptionContent {
+  padding: 50px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .DescriptionContent {
+    column-count: 2;
+    column-gap: 5rem;
+  }
+}
+
+.DescriptionContent-socials {
+  display: flex;
+  justify-content: space-between;
+  max-width: 200px;
+}
+
+.DescriptionContent-socials > * { flex-basis: 10%; }

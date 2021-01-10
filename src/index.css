@@ -1,13 +1,70 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --yellow-base: #F6E71D;
+  --black-base: #020202;
+  --black-alt: #181818;
+  --yellow-alt: #F5D10D;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'Cooper Black';
+  font-weight: 400;
+  src: url('./cooper-black.woff') format('woff');
+  font-display: swap;
 }
+
+*, *::before, *::after {
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  line-height: 1.55;
+  font-size: 1.6rem;
+  font-weight: 500;
+  background-color: var(--black-base);
+  color: var(--yellow-base);
+}
+
+@media screen and (min-width: 768px) {
+  body { font-size: 1.8rem; }
+}
+
+html, body, #root { height: 100%; }
+
+body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--yellow-base) var(--black-alt);
+}
+
+body::-webkit-scrollbar {
+  width: clamp(30px, 2.3vw, 60px);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--black-alt);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--yellow-base) ;
+  border-radius: clamp(15px, 1.15vw, 30px); /* 1/2 of width of body::-webkit-scrollbar */
+  box-shadow: inset 0 0 0 5px var(--black-alt);
+}
+
+h2 {
+  font-family: 'Cooper Black';
+  line-height: 1;
+  font-weight: 400;
+  margin-bottom: 0.5em;
+  font-size: 3rem;
+}
+
+@media screen and (min-width: 768px) { h2 { font-size: 4rem; } }
+
+p { margin-bottom: 1.5rem; }
+a { color: inherit; }
