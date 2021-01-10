@@ -61,11 +61,7 @@ function Page() {
 				color={styles.getPropertyValue('--yellow-base')}
 				backgroundColor={styles.getPropertyValue('--black-base')}
 			>
-				<div
-					style={{
-						transform: `translate(0%, -50%)`,
-					}}
-				>
+				<div style={{ transform: `translate(0%, -50%)` }}>
 					<Marquee />
 				</div>
 				<Container size="md">
@@ -74,11 +70,7 @@ function Page() {
 				<Container size="md">
 					<DescriptionContent />
 				</Container>
-				<div
-					style={{
-						transform: `translate(0%, 50%)`,
-					}}
-				>
+				<div style={{ transform: `translate(0%, 50%)` }}>
 					<Marquee direction={-1} />
 				</div>
 			</Section>
