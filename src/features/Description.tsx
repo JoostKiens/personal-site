@@ -32,7 +32,7 @@ export function DescriptionContent() {
 			</p>
 
 			<p>
-				Available for freelance work starting from the middle of feb. 2021! ☺
+				Available for freelance work starting from the middle of april 2021! ☺
 			</p>
 
 			<p>Want to know more? Reach me at:</p>
