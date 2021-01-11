@@ -5,6 +5,7 @@ import { Sparkle } from './features/Sparkle'
 import { Marquee } from './features/Marquee'
 import { DescriptionContent, DescriptionTitle } from './features/Description'
 import { Intro } from './features/Intro'
+import './App.css'
 
 export default function App() {
   return (
@@ -18,63 +19,46 @@ function Page() {
 	const styles = getComputedStyle(document.documentElement)
 
 	return (
-		<>
-    <Section
-      color={styles.getPropertyValue('--yellow-base')}
-			backgroundColor={styles.getPropertyValue('--black-base')}
-    >
-      <Container size='lg'>
-        <div style={{ position: 'relative', overflow: 'visible' }}>
-          <Intro />
-
-					<div
-							style={{
-								position: 'absolute',
-								bottom: '-16%',
-								left: '25%',
-							}}
-						>
-							<SparkleBottomLeft initialDelay={2000} />
-						</div>
-						<div
-							style={{
-								position: 'absolute',
-								top: '-8%',
-								left: '2%',
-							}}
-						>
-							<SparkleTopLeft initialDelay={1000} />
-						</div>
-						<div
-							style={{
-								position: 'absolute',
-								top: '2%',
-								right: '2%',
-							}}
-						>
-							<SparkleTopRight initialDelay={1600} />
-						</div>
-        </div>
-      </Container>
-    </Section>
-		<Section
-				color={styles.getPropertyValue('--yellow-base')}
-				backgroundColor={styles.getPropertyValue('--black-base')}
-			>
-				<div style={{ transform: `translate(0%, -50%)` }}>
-					<Marquee />
+		<div className='App'>
+			<div className='App-content'>
+				<Section
+					color={styles.getPropertyValue('--yellow-base')}
+					backgroundColor={styles.getPropertyValue('--black-base')}
+				>
+					<Container size='lg'>
+						<Intro />
+					</Container>
+				</Section>
+				<Section
+					color={styles.getPropertyValue('--yellow-base')}
+					backgroundColor={styles.getPropertyValue('--black-base')}
+				>
+					<div style={{ transform: `translate(0%, 0%)` }}>
+						<Marquee />
+					</div>
+					<Container size="md">
+						<DescriptionTitle />
+					</Container>
+					<Container size="md">
+						<DescriptionContent />
+					</Container>
+					<div style={{ transform: `translate(0%, 0%)` }}>
+						<Marquee direction={-1} />
+					</div>
+				</Section>
+			</div>
+			<div className='App-sparkleWrapper'>
+				<div className='App-sparkleBottomLeft'>
+					<SparkleBottomLeft initialDelay={2000} />
 				</div>
-				<Container size="md">
-					<DescriptionTitle />
-				</Container>
-				<Container size="md">
-					<DescriptionContent />
-				</Container>
-				<div style={{ transform: `translate(0%, 50%)` }}>
-					<Marquee direction={-1} />
+				<div className='App-sparkleTopLeft'>
+					<SparkleTopLeft initialDelay={1000} />
 				</div>
-			</Section>
-		</>
+				<div className='App-sparkleTopRight'>
+					<SparkleTopRight initialDelay={1600} />
+				</div>
+			</div>
+		</div>
   )
 }
 

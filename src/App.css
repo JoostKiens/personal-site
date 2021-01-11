@@ -1,0 +1,52 @@
+.App {
+  display: grid;
+}
+
+.App-sparkleWrapper,
+.App-content {
+  grid-area: 1/1;
+}
+
+.App-sparkleWrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.App-sparkleBottomLeft {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translate(-9%, 45%) scale(0.8);
+}
+
+@media screen and (min-width: 768px) {
+  .App-sparkleBottomLeft { transform: translate(-9%, 45%) scale(1); }
+}
+
+.App-sparkleTopLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-49%, -70%) scale(0.8);
+}
+
+@media screen and (min-width: 768px) {
+  .App-sparkleTopLeft {
+    top: -8%;
+    left: 2%;
+  }
+}
+
+.App-sparkleTopRight {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(49%, -70%) scale(0.8);
+}
+
+@media screen and (min-width: 768px) {
+  .App-sparkleTopRight {
+    top: 2%;
+    right: 2%;
+  }
+}
