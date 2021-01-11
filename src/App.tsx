@@ -33,18 +33,14 @@ function Page() {
 					color={styles.getPropertyValue('--yellow-base')}
 					backgroundColor={styles.getPropertyValue('--black-base')}
 				>
-					<div style={{ transform: `translate(0%, 0%)` }}>
-						<Marquee />
-					</div>
+					<Marquee />
 					<Container size="md">
 						<DescriptionTitle />
 					</Container>
 					<Container size="md">
 						<DescriptionContent />
 					</Container>
-					<div style={{ transform: `translate(0%, 0%)` }}>
-						<Marquee direction={-1} />
-					</div>
+					<Marquee direction={-1} />
 				</Section>
 			</div>
 			<div className='App-sparkleWrapper'>
