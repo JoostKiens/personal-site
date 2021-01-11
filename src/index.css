@@ -39,12 +39,12 @@ body {
 html, body, #root { height: 100%; }
 
 body {
-  /* scrollbar-width: thin;
-  scrollbar-color: var(--yellow-base) var(--black-alt); */
+  scrollbar-width: thin;
+  scrollbar-color: var(--yellow-base) var(--black-alt);
 }
 
 body::-webkit-scrollbar {
-  /* width: clamp(30px, 2.3vw, 60px); */
+  width: clamp(30px, 2.3vw, 60px);
 }
 
 body::-webkit-scrollbar-track {
@@ -52,9 +52,9 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  /* background-color: var(--yellow-base) ;
+  background-color: var(--yellow-base);
   border-radius: clamp(15px, 1.15vw, 30px); /* 1/2 of width of body::-webkit-scrollbar */
-  /*box-shadow: inset 0 0 0 5px var(--black-alt); */
+  box-shadow: inset 0 0 0 5px var(--black-alt);
 }
 
 h2 {
