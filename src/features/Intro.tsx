@@ -10,33 +10,31 @@ import { useViewport } from '../machinery/Viewport'
 	import { IntroSvg } from './IntroSvg'
   Since this animates blurs, the SVGs are quite heavy. Let's use a screencast instead 🤫
 */
-
 export function Intro() {
 	const {
 		ref: containerRef,
 		size: { width },
 	} = useElementSize()
+
 	const { viewportHeight } = useViewport()
 	const height = viewportHeight - 80
 	const isLandscape = width > height
 
 	return (
-		<>
-			<div ref={containerRef}>
-				<ScreenReaderOnly>
-					<h1>
-						Hey! I&apos;m Joost. UI/UX developer. I focus on UI components,
-						interactions, animations, maps, dataviz and other cool stuff
-					</h1>
-				</ScreenReaderOnly>
+		<div ref={containerRef}>
+			<ScreenReaderOnly>
+				<h1>
+					Hey! I&apos;m Joost. UI/UX developer. I focus on UI components,
+					interactions, animations, maps, dataviz and other cool stuff
+				</h1>
+			</ScreenReaderOnly>
 
-				{isLandscape ? (
-					<VideoLandscape {...{ width, height }} />
-				) : (
-					<VideoPortrait {...{ width, height }} />
-				)}
-			</div>
-		</>
+			{width && height && (isLandscape ? (
+				<VideoLandscape {...{ width, height }} />
+			) : (
+				<VideoPortrait {...{ width, height }} />
+			))}
+		</div>
 	)
 }
 
