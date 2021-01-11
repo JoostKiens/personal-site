@@ -8,9 +8,9 @@ import './Marquee.css'
 export function Marquee({ char = '⦾', direction = 1 }) {
 	const {
 		ref,
-		size: { width, height },
+		size: { height },
 	} = useElementSize()
-	const { viewportHeight } = useViewport()
+	const { viewportHeight, viewportWidth: width } = useViewport()
 	const xFactor = (viewportHeight / width) * 0.2
 
 	const count = useMemo(() => {
@@ -19,8 +19,8 @@ export function Marquee({ char = '⦾', direction = 1 }) {
 	}, [width, height])
 
   const [props, set] = useSpring(() =>
-  ({ x: 0, immediate: true })
-) as [AnimatedValue<{ x: number }>, (props: { x: number; }) => void]
+  	({ x: 0, immediate: true })
+	) as [AnimatedValue<{ x: number }>, (props: { x: number; }) => void]
 
 	useScroll(
 		({ offset: [, y] }) => {
@@ -30,26 +30,24 @@ export function Marquee({ char = '⦾', direction = 1 }) {
 	)
 
 	return (
-		<div className="Marquee">
-			<div className="Marquee-banner" {...{ ref }}>
-				<animated.div
-					className="Marquee-row"
-					style={{
-            willChange: 'transform',
-            transform: props.x.interpolate((x) => `translateX(${direction * x}px)`)
-					}}
-				>
-					{[...Array(count * 1)].map((_, i) => (
-						<div
-							style={{ width: height, height: height }}
-							className="Marquee-item"
-							key={i}
-						>
-							{char}
-						</div>
-					))}
-				</animated.div>
-			</div>
+		<div className="Marquee" style={{ width }} {...{ ref }}>
+			<animated.div
+				className="Marquee-row"
+				style={{
+					willChange: 'transform',
+					transform: props.x.interpolate((x) => `translateX(${direction * x}px)`)
+				}}
+			>
+				{[...Array(count * 1)].map((_, i) => (
+					<div
+						style={{ width: height, height: height }}
+						className="Marquee-item"
+						key={i}
+					>
+						{char}
+					</div>
+				))}
+			</animated.div>
 		</div>
 	)
 }
