@@ -99,7 +99,9 @@ export function DescriptionTitle() {
 				}}
 				className="DescriptionTitle-decoration"
 			>
-				⭑
+				<svg xmlns="http://www.w3.org/2000/svg" width="34" height="32" viewBox="0 0 34 32">
+  				<polygon fill="currentColor" points="26.944 31.44 23.392 19.68 33.232 12.096 21.088 12.096 17.056 .288 13.024 12.096 .88 12.096 10.72 19.68 7.168 31.44 17.056 24.432"/>
+				</svg>
 			</animated.div>
 		</div>
 	)

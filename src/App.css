@@ -12,41 +12,49 @@
   overflow: hidden;
 }
 
-.App-sparkleBottomLeft {
+.App-sparkleOne,
+.App-sparkleTwo,
+.App-sparkleThree {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  transform: translate(-9%, 45%) scale(0.8);
+  transform: translate(-50%, -50%);
+}
+
+.App-sparkleOne {
+  top: calc(28% - min(25%, calc(1080px / 2)));
+  left: calc(60% - min(50%, calc((100vw - 40px) / 2)));
 }
 
 @media screen and (min-width: 768px) {
-  .App-sparkleBottomLeft { transform: translate(-9%, 45%) scale(1); }
-}
-
-.App-sparkleTopLeft {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-49%, -70%) scale(0.8);
-}
-
-@media screen and (min-width: 768px) {
-  .App-sparkleTopLeft {
-    top: -8%;
-    left: 2%;
+  .App-sparkleOne {
+    top: calc(28% - min(25%, calc(1080px / 2)));
+    left: calc(60% - min(50%, calc((100vw - 40px) / 2)));
   }
 }
 
-.App-sparkleTopRight {
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(49%, -70%) scale(0.8);
+.App-sparkleTwo {
+  top: calc(32% - min(25%, calc(1080px / 2)));
+  right: calc(20% - min(50%, calc((100vw - 40px) / 2)));
 }
 
 @media screen and (min-width: 768px) {
-  .App-sparkleTopRight {
-    top: 2%;
-    right: 2%;
+  .App-sparkleTwo {
+    top: calc(25% - min(10%, calc(1080px / 2)));
+    right: calc(60% - min(50%, calc((100vw - 40px) / 2)));
   }
+}
+
+.App-sparkleThree {
+  top: calc(65% - min(25%, calc(1080px / 2)));
+  right: calc(40% - min(50%, calc((100vw - 40px) / 2)));
+}
+
+@media screen and (min-width: 768px) {
+  .App-sparkleThree {
+    top: calc(70% - min(25%, calc(1080px / 2)));
+    right: calc(80% - min(50%, calc((100vw - 40px) / 2)));
+  }
+}
+
+.App-description {
+  padding: 50px 0;
 }

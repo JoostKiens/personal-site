@@ -3,25 +3,19 @@ import { ScreenReaderOnly } from './ScreenReaderOnly'
 import { useIsInViewport } from '../machinery/useIsInViewport'
 import introLandscape from './introLandscape.mp4'
 import introPortrait from './introPortrait.mp4'
-import { useElementSize } from '../machinery/useElementSize'
 import { useViewport } from '../machinery/Viewport'
 
 /*
 	import { IntroSvg } from './IntroSvg'
   Since this animates blurs, the SVGs are quite heavy. Let's use a screencast instead 🤫
 */
-export function Intro() {
-	const {
-		ref: containerRef,
-		size: { width },
-	} = useElementSize()
-
+export const Intro = forwardRef<HTMLDivElement, { width: number }>(({ width }, ref) => {
 	const { viewportHeight } = useViewport()
 	const height = viewportHeight - 80
 	const isLandscape = width > height
 
 	return (
-		<div ref={containerRef}>
+		<div {...{ ref }}>
 			<ScreenReaderOnly>
 				<h1>
 					Hey! I&apos;m Joost. UI/UX developer. I focus on UI components,
@@ -36,7 +30,7 @@ export function Intro() {
 			))}
 		</div>
 	)
-}
+})
 
 type VideoProps = {
 	width: number;
