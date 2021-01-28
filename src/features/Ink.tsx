@@ -10,6 +10,7 @@ const trailAmount = 0.35
 
 export function Ink() {
 	const mousePositionRef = useRef([0, 0])
+	const hasMovedRef = useRef(false)
 	const id = useUniqueId()
 	const isGecko = useMemo(() => {
 		const regex1 = /Gecko\/\d+/g
@@ -24,12 +25,16 @@ export function Ink() {
 			xy: [0, 0],
 			scale,
 			angle: [0, 0],
+			opacity: 0,
 			range: width / 2 - (width / 2) * scale + 2,
 		}
 	})
 
 	useMove(
-		({ values: [x, y] }) => { mousePositionRef.current = [x, y] },
+		({ values: [x, y] }) => {
+			mousePositionRef.current = [x, y]
+			hasMovedRef.current = true
+		},
 		{ domTarget: window }
 	)
 
@@ -46,6 +51,7 @@ export function Ink() {
 
 			return {
 				xy: [resX, resY],
+				opacity: hasMovedRef.current ? 1 : 0,
 				immediate: true,
 			}
 		})
@@ -84,7 +90,7 @@ export function Ink() {
 					pointerEvents: 'none',
 				}}
 			>
-				{springs.map(({ xy, scale }, i) => {
+				{springs.map(({ xy, scale, opacity }, i) => {
 					return (
 					<animated.div
 						key={i}
@@ -97,6 +103,8 @@ export function Ink() {
 							borderRadius: '50%',
 							position: 'absolute',
 							transformOrigin: 'center',
+							// @ts-ignore // WTF??
+							opacity,
 							// @ts-ignore // WTF??
 							backgroundColor: '#F6E71D',
 						}}
