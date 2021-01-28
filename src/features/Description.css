@@ -10,9 +10,15 @@
 }
 
 .DescriptionTitle-decoration {
-  font-size: 10rem;
-  line-height: 1;
-  flex-shrink: 0;
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .DescriptionTitle-decoration {
+    line-height: 1;
+    flex-shrink: 0;
+    font-size: 10rem;
+  }
 }
 
 .DescriptionContent {

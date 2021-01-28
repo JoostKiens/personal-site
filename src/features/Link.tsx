@@ -1,5 +1,5 @@
 import React from 'react'
-import { animated, useSpring, AnimatedValue, config } from 'react-spring'
+import { animated, useSpring, config } from 'react-spring'
 import { useElementSize } from '../machinery/useElementSize'
 import { useHover } from 'react-use-gesture'
 import './Link.css'
@@ -13,7 +13,7 @@ export function Link({ children, href }: { children: React.ReactNode; href: stri
 	const [{ x }, set] = useSpring(() => ({
 		x: 0,
 		config: config.stiff,
-	})) as [AnimatedValue<{ x: number }>, (props: { x: number }) => void]
+	}))
 
 	const bind = useHover(({ hovering }) => {
 		set({ x: hovering ? -60 : 0 })

@@ -1,12 +1,8 @@
 .Marquee {
   overflow: hidden;
-}
-
-.Marquee-banner {
   border-color: var(--yellow-base);
   border-style: solid;
   border-width: 10px 0;
-  width: 100%;
   position: relative;
   height: 83px;
   padding: 4px 0;
