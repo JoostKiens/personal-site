@@ -4,6 +4,7 @@ import { Section } from './features/Section'
 import { Container } from './features/Container'
 import { Sparkle } from './features/Sparkle'
 import { Marquee } from './features/Marquee'
+import { Ink } from './features/Ink'
 import { useElementSize } from './machinery/useElementSize'
 import { DescriptionContent, DescriptionTitle } from './features/Description'
 import { Intro } from './features/Intro'
@@ -69,6 +70,7 @@ function Page() {
 					</div>
 				</Section>
 			</div>
+			<Ink />
 		</div>
   )
 }

@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { useElementSize } from '../machinery/useElementSize'
 import { useViewport } from '../machinery/Viewport'
 import { useScroll } from 'react-use-gesture'
-import { animated, useSpring, AnimatedValue } from 'react-spring'
+import { animated, useSpring } from 'react-spring'
 import './Marquee.css'
 
 export function Marquee({ char = '⦾', direction = 1 }) {
@@ -20,7 +20,7 @@ export function Marquee({ char = '⦾', direction = 1 }) {
 
   const [props, set] = useSpring(() =>
   	({ x: 0, immediate: true })
-	) as [AnimatedValue<{ x: number }>, (props: { x: number; }) => void]
+	)
 
 	useScroll(
 		({ offset: [, y] }) => {
@@ -34,8 +34,8 @@ export function Marquee({ char = '⦾', direction = 1 }) {
 			<animated.div
 				className="Marquee-row"
 				style={{
-					willChange: 'transform',
-					transform: props.x.interpolate((x) => `translateX(${direction * x}px)`)
+					willChange: 'auto',
+					transform: props.x.to((x) => `translateX(${direction * x}px)`)
 				}}
 			>
 				{[...Array(count * 1)].map((_, i) => (

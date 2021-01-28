@@ -1,5 +1,5 @@
 import React from 'react'
-import { animated, useTrail, interpolate, AnimatedValue } from 'react-spring'
+import { animated, useTrail, interpolate } from 'react-spring'
 import './Sparkle.css'
 
 type SparkleProps = {
@@ -19,7 +19,7 @@ export function Sparkle({ initialDelay = 0, sparkles }: SparkleProps) {
 			tension: 240,
 			friction: 16,
 		},
-	}) as AnimatedValue<{ scale: number }[]>
+	})
 
 	return (
 		<div className='SparkleGroup'>
@@ -31,7 +31,7 @@ export function Sparkle({ initialDelay = 0, sparkles }: SparkleProps) {
 							position: 'absolute',
 							top,
 							left,
-							willChange: 'transform',
+							willChange: 'auto',
 							transform: interpolate(
 								[scale],
 								(x) => `translate(-50%, -50%) scale(${desiredScale * x})`

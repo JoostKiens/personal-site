@@ -80,8 +80,8 @@ export function DescriptionTitle() {
 		<div className="DescriptionTitle">
 			<animated.div
 				style={{
-					willChange: 'transform',
-					transform: r.interpolate((v) => `rotate(${v}deg)`),
+					willChange: 'auto',
+					transform: r.to((v) => `rotate(${v}deg)`),
 				}}
 				className="DescriptionTitle-decoration"
 			>
@@ -94,8 +94,8 @@ export function DescriptionTitle() {
 			</h2>
 			<animated.div
 				style={{
-					willChange: 'transform',
-					transform: r.interpolate((v) => `rotate(${v}deg)`),
+					willChange: 'auto',
+					transform: r.to((v) => `rotate(${v}deg)`),
 				}}
 				className="DescriptionTitle-decoration"
 			>

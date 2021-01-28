@@ -7,7 +7,6 @@ export function useElementSize() {
 	const [size, setSize] = React.useState(defaultSize)
 	const createObserver = React.useCallback(() => {
 		return new window.ResizeObserver(([entry]) => {
-			console.log(entry.contentRect)
 			setSize({
 				width: entry.contentRect.width,
 				height: entry.contentRect.height,
