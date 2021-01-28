@@ -1,5 +1,5 @@
 import React from 'react'
-import { animated, useTrail, interpolate } from 'react-spring'
+import { animated, useTrail, to } from 'react-spring'
 import './Sparkle.css'
 
 type SparkleProps = {
@@ -32,7 +32,7 @@ export function Sparkle({ initialDelay = 0, sparkles }: SparkleProps) {
 							top,
 							left,
 							willChange: 'auto',
-							transform: interpolate(
+							transform: to(
 								[scale],
 								(x) => `translate(-50%, -50%) scale(${desiredScale * x})`
 							),
