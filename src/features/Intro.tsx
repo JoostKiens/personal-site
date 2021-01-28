@@ -82,12 +82,14 @@ const Video = forwardRef<HTMLVideoElement, VideoImplProps>((
 			aria-hidden
 			muted
 			disablePictureInPicture
-			{...{ src, ref }}
+			width={intrinsicWidth}
+			height={intrinsicHeight}
 			style={
 				intrinsicHeight / intrinsicWidth < height / width
-					? { width, height: (intrinsicHeight / intrinsicWidth) * width }
-					: { width: (intrinsicWidth / intrinsicHeight) * height, height }
+				? { width, height: (intrinsicHeight / intrinsicWidth) * width }
+				: { width: (intrinsicWidth / intrinsicHeight) * height, height }
 			}
+			{...{ src, ref }}
 		/>
 	)
 })

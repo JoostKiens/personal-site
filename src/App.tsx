@@ -35,14 +35,16 @@ function Page() {
 	return (
 		<div className='App' >
 			<div className='App-sparkleWrapper'>
-				<div className='App-sparkleOne'>
-					<SparkleOne initialDelay={1000} />
-				</div>
-				<div className='App-sparkleTwo'>
-					<SparkleTwo initialDelay={1600} />
-				</div>
-				<div className='App-sparkleThree'>
-					<SparkleThree initialDelay={2000} />
+				<div className='App-sparklePositioner'>
+					<div className='App-sparkleOne'>
+						<SparkleOne initialDelay={1000} />
+					</div>
+					<div className='App-sparkleTwo'>
+						<SparkleTwo initialDelay={1600} />
+					</div>
+					<div className='App-sparkleThree'>
+						<SparkleThree initialDelay={2000} />
+					</div>
 				</div>
 			</div>
 			<div className='App-content'>
