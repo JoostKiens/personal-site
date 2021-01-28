@@ -1,28 +1,24 @@
 // Inspired by https://cdn.jsdelivr.net/gh/niccolomiranda/m-m@f18803d/ink-minify.js
-import React, { useCallback, useRef, useEffect, useState, useMemo } from 'react'
+import React, { useCallback, useRef, useEffect, useMemo } from 'react'
 import { useUniqueId } from '../machinery/useUniqueId'
 import { useMove } from 'react-use-gesture'
 import { animated, useSprings } from 'react-spring'
 
 const amount = 20
-const sineDots = Math.floor(0.3 * amount)
 const width = 40
-const idleTimeout = 150
-const angleSpeed = 0.5
 const trailAmount = 0.35
 
 export function Ink() {
-	const { isIdle, startIdleTimer, resetIdleTimer } = useIdleTimer(idleTimeout)
 	const mousePositionRef = useRef([0, 0])
 	const id = useUniqueId()
 	const isGecko = useMemo(() => {
 		const regex1 = /Gecko\/\d+/g
-		const regex2 = /rv\:\d+/g
+		const regex2 = /rv:\d+/g
 		const ua = window.navigator.userAgent
 		return ua.match(regex1) && ua.match(regex2)
 	}, [])
 
-	const [springs, setSprings] = useSprings(20, (index) => {
+	const [springs, setSprings] = useSprings(amount, (index) => {
 		const scale = 1 - 0.05 * index
 		return {
 			xy: [0, 0],
@@ -33,50 +29,27 @@ export function Ink() {
 	})
 
 	useMove(
-		({ values: [x, y], moving }) => {
-			mousePositionRef.current = [x, y]
-			moving ? resetIdleTimer() : startIdleTimer()
-		},
+		({ values: [x, y] }) => { mousePositionRef.current = [x, y] },
 		{ domTarget: window }
 	)
-
-	useEffect(() => {
-		if (!isIdle) return
-		setSprings(() => ({
-			angle: [2 * Math.PI * Math.random(), 2 * Math.PI * Math.random()],
-		}))
-	}, [isIdle, setSprings])
 
 	const draw = useCallback(() => {
 		let x = mousePositionRef.current[0]
 		let y = mousePositionRef.current[1]
 
-		setSprings((index, controller) => {
+		setSprings((index) => {
 			var next = springs[index + 1] || springs[0]
 			const [nextX, nextY] = next.xy.get()
 			const [resX, resY] = [x, y]
 			x += (nextX - resX) * trailAmount
 			y += (nextY - resY) * trailAmount
 
-			if (!isIdle || index <= sineDots) {
-				return {
-					xy: [resX, resY],
-					immediate: true,
-				}
-			} else {
-				const angle = controller.springs.angle.get()
-				const range = controller.springs.range.get()
-				const newAngle = angle.map((x) => x + angleSpeed * Math.random())
-				const newX = x + Math.sin(newAngle[0]) * range
-				const newY = y + Math.cos(newAngle[1]) * range
-
-				return {
-					xy: [newX, newY],
-					angle: newAngle,
-				}
+			return {
+				xy: [resX, resY],
+				immediate: true,
 			}
 		})
-	}, [setSprings, springs, isIdle])
+	}, [setSprings, springs])
 
 	useRaf({ callback: draw })
 
@@ -148,31 +121,4 @@ function useRaf({ callback }) {
 			rafId = window.requestAnimationFrame(onRaf)
 		}
 	}, [callback])
-}
-
-function useIdleTimer(idleTimeout) {
-	const [isIdle, setIsIdle] = useState(false)
-	const timerIdRef = useRef<any>()
-
-	function goIdle() {
-		setIsIdle(true)
-	}
-
-	function startIdleTimer() {
-		timerIdRef.current = setTimeout(goIdle, idleTimeout)
-		setIsIdle(false)
-	}
-
-	function resetIdleTimer() {
-		clearTimeout(timerIdRef.current)
-		startIdleTimer()
-	}
-
-	useEffect(() => {
-		return () => {
-			timerIdRef.current && clearTimeout(timerIdRef.current)
-		}
-	}, [])
-
-	return { resetIdleTimer, startIdleTimer, isIdle }
 }
