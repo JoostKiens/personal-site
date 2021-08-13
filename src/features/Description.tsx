@@ -63,6 +63,7 @@ export function DescriptionContent() {
 					title="Twitter"
 				/>
 			</div>
+			<p>KvK: 81483791</p>
 		</div>
 	)
 }
