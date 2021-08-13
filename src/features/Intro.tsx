@@ -4,6 +4,7 @@ import { useIsInViewport } from '../machinery/useIsInViewport'
 import introLandscape from './introLandscape.mp4'
 import introPortrait from './introPortrait.mp4'
 import { useViewport } from '../machinery/Viewport'
+import './Intro.css'
 
 /*
 	import { IntroSvg } from './IntroSvg'
@@ -41,7 +42,7 @@ function VideoPortrait({ width, height }: VideoProps) {
 	const intrinsicHeight = 1000
 	const { isInViewportRef, videoRef } = usePlayVideoInViewport()
 	return (
-		<div ref={isInViewportRef}>
+		<div ref={isInViewportRef} className="Intro-video">
 			<Video
 				ref={videoRef}
 				src={introPortrait}
@@ -56,7 +57,7 @@ function VideoLandscape({ width, height }: VideoProps) {
 	const intrinsicHeight = 1080
 	const { isInViewportRef, videoRef } = usePlayVideoInViewport()
 	return (
-		<div ref={isInViewportRef}>
+		<div ref={isInViewportRef} className="Intro-video">
 			<Video
 				ref={videoRef}
 				src={introLandscape}
